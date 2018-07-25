@@ -23,8 +23,8 @@ class Song < ActiveRecord::Base
   def note_contents=(arry)
     arry.each { |n|
       if !Note.find_by(content: n, song_id: self.id)
-        binding.pry
         self.note_ids << Note.create(:content => n, :song_id => self.id)
+        binding.pry
       end
     }
     self.save
