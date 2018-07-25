@@ -25,9 +25,11 @@ class Song < ActiveRecord::Base
       if !Note.find_by(content: c, song_id: self.id)
         n = Note.create(:content => c, :song_id => self.id)
         self.note_ids << n
+        binding.pry
       end
     }
     self.save
+    binding.pry
   end
   def note_contents
     self.note_ids.map { |id| Note.find(id).content}
